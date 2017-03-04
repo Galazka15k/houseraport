@@ -1,0 +1,20 @@
+ <% if logged_in? %>
+
+ <% else %>
+
+<center>
+<div class="login">
+    <%= form_for(:session, url: login_path) do |f| %>
+  <%= f.label :email %>
+      <%= f.email_field :email %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+      </br>
+      <%= f.submit "Zaloguj sie", class: "btn btn-primary" %>
+    <% end %>
+
+    <p> <%= link_to "Załóż konto", signup_path %></p>
+  </div>
+  </center>
+  <% end %>

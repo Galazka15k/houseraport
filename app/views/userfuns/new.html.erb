@@ -1,0 +1,18 @@
+
+  <% if logged_in? %>
+<center>
+	<h1>Daj funkcje </h1>
+<%= form_for(@userfun) do |f| %>
+ Pracownik:
+ <%= f.collection_select(:user_id, User.all, :id, :imie, options = {}, html_options = { :class => "form-control" }) %>
+</br>
+Funkcja
+ <%= f.collection_select(:function_id, Function.all, :id, :nazwa, options = {}, html_options = { :class => "form-control" }) %>
+</br>
+    <%= f.submit "Daj tą funkcje", class: "btn btn-primary" %>
+<% end %>
+
+
+</center>
+
+  <% end %>

@@ -1,0 +1,18 @@
+
+ <% if logged_in? %>
+<center>
+<h1>Dodaj Firme</h1>
+  <%= form_for(@firma) do |f| %>
+      <%= f.label :nazwa %>
+      <%= f.text_field :nazwa, class: 'form-control' %>
+      </br>
+      <%= f.label :adres %>
+      <%= f.text_field :adres, class: 'form-control' %>
+
+      <%= f.submit "Dodaj nową firme", class: "btn btn-primary" %>
+  <% end %>
+
+
+
+</center>
+<% end %>

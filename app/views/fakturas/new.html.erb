@@ -1,0 +1,34 @@
+
+  <% if logged_in? %>
+<center>
+<h1>Dodaj nową fakture</h1>
+<h2>Faktura od firmy:</h2>
+</br>
+<%= form_for(@faktura) do |f| %>
+ <%= f.collection_select(:firma_id, Firma.all, :id, :nazwa, options = {}, html_options = { :class => "form-control" }) %>
+</br>
+	<h2><%= f.label :cena %></h2>
+    <%= f.text_field :cena,html_options = { :class => "form-control" } %>
+</br>
+    <%= f.submit "Dodaj nową fakture", class: "btn btn-primary" %>
+<% end %>
+
+
+</center>
+ <% end %>
+ 
+ <center>
+<h1>Dodaj nową fakture</h1>
+<h2>Faktura od firmy:</h2>
+</br>
+<%= form_for(@faktura) do |f| %>
+ <%= f.collection_select(:firma_id, Firma.all, :id, :nazwa, options = {}, html_options = { :class => "form-control" }) %>
+</br>
+	<h2><%= f.label :cena %></h2>
+    <%= f.text_field :cena,html_options = { :class => "form-control" } %>
+</br>
+    <%= f.submit "Dodaj nową fakture", class: "btn btn-primary" %>
+<% end %>
+
+
+</center>

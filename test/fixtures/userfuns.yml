@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nazwa: MyString
+  user_id: 1
+  function_id: 1
+
+two:
+  nazwa: MyString
+  user_id: 1
+  function_id: 1

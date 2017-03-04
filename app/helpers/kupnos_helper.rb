@@ -1,0 +1,2 @@
+module KupnosHelper
+end

@@ -1,0 +1,71 @@
+
+
+
+
+
+  <% if logged_in? %>
+
+
+
+<div class="box">
+<h1>Raport Dobowy :</h1>
+
+<label>
+<%= form_for(@rozliczenie) do |f| %>
+  <% if @rozliczenie.errors.any? %>
+      <h2><%= pluralize(@rozliczenie.errors.count, "error") %> przy wypełnianiu:</h2>
+
+      <% @rozliczenie.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      <% end %>
+    <p><h2><span>Dzisiejszy obrót</span></h2></p>
+    <%= f.text_field :obrot, :class => "wpis",disabled: false %>
+
+    <p><h2><span>Na karte</span></h2></p>
+    <%= f.text_field :karta, :class => "wpis",disabled: false %>
+
+    <p><h2><span>Kasa Fiskalna</span></h2></p>
+    <%= f.text_field :kasa_fiskalna, :class => "wpis",disabled: false %>
+
+</label>
+<h1>Pracownicy :</h1>
+<label>
+        <p><h2><span>SushiMaster</span></h2></p>
+<%= f.collection_select(:i_sushimaster, User.sortuj, :id, :imie, options = {} , {:class=>'wpis'})  %>
+        <p><h2><span>SushiMaster</span></h2></p>
+    <%= f.text_field :w_sushimaster, :class => "wpis",disabled: false %>
+            <p><h2><span>Ciepla kuchnia</span></h2></p>
+      <%= f.collection_select(:i_ciepla, User.all, :id, :imie, options = {} , {:class=>'wpis'}) %>
+            <p><h2><span>Ciepla kuchnia</span></h2></p>
+    <%= f.text_field :w_ciepla, :class => "wpis",disabled: false %>
+        <p><h2><span>Dostawca</span></h2></p>
+     <%= f.collection_select(:i_dostawca, User.all, :id, :imie, options = {} , {:class=>'wpis'}) %>
+        <p><h2><span>Dostawca</span></h2></p>
+    <%= f.text_field :w_dostawca, :class => "wpis",disabled: false %>
+            <p><h2><span>Kelnerka</span></h2></p>
+     <%= f.collection_select(:i_kelnterka, User.all, :id, :imie, options = {}, {:class=>'wpis'} ) %>
+        <p><h2><span>kelnerka</span></h2></p>
+    <%= f.text_field :w_kelnterka, :class => "wpis",disabled: false %>
+        <p><h2><span>Inne</span></h2></p>
+    <%= f.text_field :nazwa, :class => "wpis",disabled: false %>
+
+
+</label>
+    <%= f.submit "Wyslij", class: "wpis" %>
+</label>
+</div>
+        <% end %>
+ <% end %>
+
+
+
+
+
+ 
+
+
+ 
+ 
+
+

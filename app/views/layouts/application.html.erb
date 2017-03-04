@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BaZa</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<body>
+    <div class="container">
+      <div class="main">
+        <nav class="cbp-hsmenu-wrapper" id="cbp-hsmenu-wrapper">
+          <div class="cbp-hsinner">
+            <ul class="cbp-hsmenu">
+              <li>
+                <a href="#">Restauracja</a>
+                <ul class="cbp-hssubmenu">
+                  <li><a href="http://localhost:3000/users/show"><%= image_tag("show_empoyee.png", :alt => "imt01") %><span>Pokaż pracowników</span></a></li>
+                  <li><a href="http://localhost:3000/users/new"><%= image_tag("add_new_employer.jpg", :alt => "imt01") %><span>Dodaj nowego pracownika</span></a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Towary</a>
+                <ul class="cbp-hssubmenu cbp-hssub-rows">
+                  <li><a href="http://localhost:3000/fakturas/new"><%= image_tag("1.png", :alt => "imt01") %><span>Dodaj Fakture</span></a></li>
+                  <li><a href="http://localhost:3000/firmas/new"><%= image_tag("1.png", :alt => "imt01") %><span>Dodaj Firme</span></a></li>
+                   <li><a href="http://localhost:3000/kupnos/new"><%= image_tag("dodaj_zakup.jpg", :alt => "imt01") %><span>Dodaj Zakupy</span></a></li>
+                   <li><a href="http://localhost:3000/firmas/show"><%= image_tag("1.png", :alt => "imt01") %><span>Zobacz Firmy</span></a></li>
+                  <li><a href="http://localhost:3000/fakturas/show"><%= image_tag("1.png", :alt => "imt01") %><span>Zobacz Faktury</span></a></li>
+                   <li><a href="http://localhost:3000/kupnos/show"><%= image_tag("1.png", :alt => "imt01") %><span>Zobacz Zakupy</span></a></li>
+                </ul>
+              </li>
+               <li>
+                <a href="#">Raporty</a>
+                <ul class="cbp-hssubmenu">
+                  <li><a href="http://localhost:3000/rozliczenies/new"><%= image_tag("1.png", :alt => "imt01") %><span>Raport Dobowy</span></a></li>
+                  <li><a href="http://localhost:3000/rozliczenies/show"><%= image_tag("1.png", :alt => "imt01") %><span>Zobacz Raporty Dobowe</span></a><li>
+                </ul>
+
+              <li>
+                <a href="#">Inne</a>
+                <ul class="cbp-hssubmenu">
+                  <li><a href="http://localhost:3000/functions/new"><%= image_tag("1.png", :alt => "imt01") %><span>Dodaj Funkcje</span></a></li>
+                  <li><a href="http://localhost:3000/functions/show"><%= image_tag("1.png", :alt => "imt01") %><span>Zobacz Funkcje</span></a></li>
+                  <li><a href="http://localhost:3000/userfuns/new"><%= image_tag("1.png", :alt => "imt01") %><span>Daj funkcje pracownikowi</span></a></li>
+                  <li><a href="http://localhost:3000/userfuns/show"><%= image_tag("1.png", :alt => "imt01") %><span>Zobacz funkcje pracownikow</span></a></li>
+                </ul>
+              </li>
+
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <script src="js/cbpHorizontalSlideOutMenu.min.js"></script>
+    <script>
+      var menu = new cbpHorizontalSlideOutMenu( document.getElementById( 'cbp-hsmenu-wrapper' ) );
+    </script>
+
+       <p>Zalogowany jesteś jako: <%= current_user.imie %></p>
+          <%= link_to "Wyloguj sie", logout_path, method: "delete" %>
+  </body>
+
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="container">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+
+      <%= yield %>
+      <%= debug(params) if Rails.env.development? %>
+    </div>
+
+</body>
+</html>

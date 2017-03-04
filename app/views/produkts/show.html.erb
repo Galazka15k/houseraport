@@ -1,0 +1,18 @@
+
+
+<% if logged_in? %>
+<table width="100%" cellspacing="0" cellpadding="10">
+<tr>
+	<th>Nazwa Produktu</th>
+	<th>Data</th>
+</tr>
+<% @produkt.each do |produkt| %>
+<tr>
+	<td><%= produkt.nazwa %></td>
+	<td width="200"><%= produkt.created_at %></td>
+</tr>
+<% end %>
+</table>
+
+<% end %>
+

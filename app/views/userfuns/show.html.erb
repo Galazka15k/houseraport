@@ -1,0 +1,19 @@
+<% if logged_in? %>
+<table width="100%" cellspacing="0" cellpadding="10">
+<tr>
+	<th>Imie</th>
+		<th>Nazwisko</th>
+				<th>Telefon</th>
+	<th>Funkcja</th>
+</tr>
+<% @userfun.each do |userfun| %>
+<tr>
+	<td><%= userfun.user.imie %></td>
+	<td><%= userfun.user.nazwisko %></td>
+	<td><%= userfun.user.telefon %></td>
+	<td><%= userfun.function.nazwa %></td>
+</tr>
+<% end %>
+</table>
+
+<% end %>

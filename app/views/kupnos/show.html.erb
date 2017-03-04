@@ -1,0 +1,20 @@
+
+
+<% if logged_in? %>
+<table width="100%" cellspacing="0" cellpadding="10">
+<tr>
+	<th>Firma</th>
+	<th>Produkt</th>
+	<th>Cena</th>
+</tr>
+<% @kupno.each do |kupno| %>
+<tr>
+	<td><%= kupno.firma.nazwa %></td>
+	<td><%= kupno.produkt.nazwa %></td>
+	<td><%= kupno.nazwa %></td>
+</tr>
+<% end %>
+</table>
+
+<% end %>
+

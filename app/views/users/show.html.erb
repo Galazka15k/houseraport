@@ -1,0 +1,23 @@
+
+  <% if logged_in? %>
+
+
+
+<table width="100%" cellspacing="0" cellpadding="10">
+<tr>
+	<th>Imie</th>
+  <th>Nazwisko</th>
+	<th>Email</th>
+	<th>Telefon</th>
+
+</tr>
+<% @user.each do |user| %>
+<tr>
+	<td width="50"><%= user.imie %></td>
+  <td width="200"><%= user.nazwisko %></td>
+	<td width="50"><%= user.email %></td>
+	<td width="50"><%= user.telefon %></td>
+</tr>
+<% end %>
+</table>
+<% end %>

@@ -1,0 +1,16 @@
+
+ <% if logged_in? %>
+<center>
+<h1>Dodaj Produkt</h1>
+  <%= form_for(@produkt) do |f| %>
+      <%= f.label :nazwa %>
+      <%= f.text_field :nazwa, class: 'form-control' %>
+      </br>
+
+      <%= f.submit "Dodaj nowy produkt", class: "btn btn-primary" %>
+  <% end %>
+
+
+
+</center>
+<% end %>

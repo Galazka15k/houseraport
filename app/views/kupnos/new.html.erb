@@ -1,0 +1,22 @@
+
+  <% if logged_in? %>
+<center>
+	<h1>Dodaj zakup</h1>
+<%= form_for(@kupno) do |f| %>
+ Firma:
+ <%= f.collection_select(:firma_id, Firma.all, :id, :nazwa, options = {}, html_options = { :class => "form-control" }) %>
+</br>
+Produkt:
+ <%= f.collection_select(:produkt_id, Produkt.all, :id, :nazwa, options = {}, html_options = { :class => "form-control" }) %>
+ </br>
+Cena i komentarz
+
+    <%= f.text_field :nazwa %>
+</br>
+    <%= f.submit "Dodaj nowe zakupy", class: "btn btn-primary" %>
+<% end %>
+
+
+</center>
+
+  <% end %>
