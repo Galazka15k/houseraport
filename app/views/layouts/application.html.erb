@@ -6,7 +6,6 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
 
 <body>
     <div class="container">
@@ -60,8 +59,6 @@
       var menu = new cbpHorizontalSlideOutMenu( document.getElementById( 'cbp-hsmenu-wrapper' ) );
     </script>
 
-       <p>Zalogowany jesteś jako: <%= current_user.imie %></p>
-          <%= link_to "Wyloguj sie", logout_path, method: "delete" %>
   </body>
 
 
