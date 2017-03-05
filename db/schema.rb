@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170227131355) do
+ActiveRecord::Schema.define(version: 20170126172838) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "assignments", force: :cascade do |t|
     t.integer  "user_id"
@@ -20,8 +23,8 @@ ActiveRecord::Schema.define(version: 20170227131355) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "assignments", ["role_id"], name: "index_assignments_on_role_id"
-  add_index "assignments", ["user_id"], name: "index_assignments_on_user_id"
+  add_index "assignments", ["role_id"], name: "index_assignments_on_role_id", using: :btree
+  add_index "assignments", ["user_id"], name: "index_assignments_on_user_id", using: :btree
 
   create_table "fakturas", force: :cascade do |t|
     t.string   "nazwa"
@@ -33,17 +36,15 @@ ActiveRecord::Schema.define(version: 20170227131355) do
 
   create_table "firmas", force: :cascade do |t|
     t.string   "nazwa"
+    t.string   "adres"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "adres"
   end
 
   create_table "functions", force: :cascade do |t|
-    t.string   "nazwa"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "user_id"
-    t.string   "imie_user"
+    t.string   "nazwa",      default: "", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "kupnos", force: :cascade do |t|
@@ -54,17 +55,17 @@ ActiveRecord::Schema.define(version: 20170227131355) do
     t.integer  "firma_id"
   end
 
-  add_index "kupnos", ["firma_id"], name: "index_kupnos_on_firma_id"
-  add_index "kupnos", ["produkt_id"], name: "index_kupnos_on_produkt_id"
+  add_index "kupnos", ["firma_id"], name: "index_kupnos_on_firma_id", using: :btree
+  add_index "kupnos", ["produkt_id"], name: "index_kupnos_on_produkt_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
-    t.string   "content"
-    t.integer  "user_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "content",    default: "", null: false
+    t.string   "string",     default: "", null: false
+    t.string   "user_id"
+    t.string   "integer"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
-
-  add_index "posts", ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at"
 
   create_table "produkts", force: :cascade do |t|
     t.string   "nazwa"
@@ -87,18 +88,13 @@ ActiveRecord::Schema.define(version: 20170227131355) do
     t.integer  "w_ciepla"
     t.integer  "w_dostawca"
     t.integer  "w_kelnterka"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
     t.string   "i_sushimaster"
-    t.string   "i_dostawca"
     t.string   "i_ciepla"
+    t.string   "i_dostawca"
     t.string   "i_kelnterka"
     t.integer  "user_id"
-  end
-
-  create_table "towars", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "userfuns", force: :cascade do |t|
@@ -113,16 +109,19 @@ ActiveRecord::Schema.define(version: 20170227131355) do
     t.string   "imie"
     t.string   "nazwisko"
     t.string   "user"
-    t.string   "email",         	default: "", null: false
-    t.string   "telefon",                    default: "", null: false
+    t.string   "email",           default: "", null: false
+    t.string   "telefon",         default: "", null: false
     t.string   "password_digest"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "remember_digest"
-    t.string   "sort"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["user"], name: "index_users_on_user"
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["user"], name: "index_users_on_user", using: :btree
 
+  add_foreign_key "assignments", "roles"
+  add_foreign_key "assignments", "users"
+  add_foreign_key "kupnos", "firmas"
+  add_foreign_key "kupnos", "produkts"
 end
