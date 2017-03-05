@@ -16,8 +16,6 @@ class User < ActiveRecord::Base
 
 
 
-	scope :sortuj, lambda{order ("users.imie ASC")}
-
 	def User.new_token
     SecureRandom.urlsafe_base64
   end

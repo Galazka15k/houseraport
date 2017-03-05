@@ -3,11 +3,11 @@ class UsersController < ApplicationController
 
 
   def index
-    @user = User.sortuj
+    @user = User.all
   end
 
   def show
-    @user = User.sortuj
+    @user = User.all
 
 
   end

@@ -32,7 +32,7 @@
 <h1>Pracownicy :</h1>
 <label>
         <p><h2><span>SushiMaster</span></h2></p>
-<%= f.collection_select(:i_sushimaster, User.sortuj, :id, :imie, options = {} , {:class=>'wpis'})  %>
+<%= f.collection_select(:i_sushimaster, User.all, :id, :imie, options = {} , {:class=>'wpis'})  %>
         <p><h2><span>SushiMaster</span></h2></p>
     <%= f.text_field :w_sushimaster, :class => "wpis",disabled: false %>
             <p><h2><span>Ciepla kuchnia</span></h2></p>
